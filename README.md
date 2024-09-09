@@ -9,3 +9,5 @@ If you want to change link for router, go to file [script.js](static/script.js) 
 const url = 'www.example.com';  // Make a POST request to this url
 `
 
+## Instuction for file app.py
+You can read file [final_project_module2.pdf](final_project_module2.pdf) It was written about how to create file [app.py](app.py) with Flask.
