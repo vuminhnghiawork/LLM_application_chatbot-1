@@ -1,0 +1,18 @@
+version: '3.10'
+
+services:
+  gpt-service:
+    image: nvcr.io/nvidia/pytorch:23.09-py3  # Hình ảnh Docker từ NVIDIA
+    runtime: nvidia                         # Sử dụng NVIDIA runtime
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]           # Khai báo GPU
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all          # Sử dụng tất cả GPU
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    volumes:
+      - ./:/app                             # Gắn kết thư mục hiện tại vào container
+    working_dir: /app                       # Thiết lập thư mục làm việc trong container
+    command: python app.py                  # Lệnh chạy ứng dụng bên trong container
